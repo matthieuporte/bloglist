@@ -1,12 +1,12 @@
 
-import SignIn from "./signIn";
+import CreateForm from "./createForm";
 
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 
-const MyDrawer = () => {
+const MyDrawer = ({username,setUsername,password,setPassword}) => {
 	const [state, setState] = React.useState({left: false});
 
 	const toggleDrawer = (anchor, open) => (event) => {
@@ -20,10 +20,12 @@ const MyDrawer = () => {
 	const content = () => (
 		<Box
 			sx={{ width: 450 }}
-			role="login"
+			role="creation"
 		>
 
-			<SignIn />
+			<CreateForm
+
+			/>
 		</Box>
 	);
 
@@ -31,7 +33,7 @@ const MyDrawer = () => {
 		<div>
 			{["left"].map((anchor) => (
 				<React.Fragment key={anchor}>
-					<Button onClick={toggleDrawer(anchor, true)}>Sign in</Button>
+					<Button onClick={toggleDrawer(anchor, true)}>Create a blog post</Button>
 					<Drawer
 						anchor={anchor}
 						open={state[anchor]}

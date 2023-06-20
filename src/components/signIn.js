@@ -13,16 +13,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 
+const SignIn = (props) => {
 
-export default function SignIn() {
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get("email"),
-			password: data.get("password"),
-		});
-	};
 
 	return (
 		<Container component="main" maxWidth="xs">
@@ -41,16 +33,18 @@ export default function SignIn() {
 				<Typography component="h1" variant="h5">
 					Sign in
 				</Typography>
-				<Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+				<Box component="form" onSubmit={props.handleLogin} noValidate sx={{ mt: 1 }}>
 					<TextField
 						margin="normal"
 						required
 						fullWidth
-						id="email"
-						label="Email Address"
-						name="email"
-						autoComplete="email"
+						id="username"
+						label="Username"
+						value={props.username}
+						name="username"
+						autoComplete="username"
 						autoFocus
+						onChange={({ target }) => props.setUsername(target.value)}
 					/>
 					<TextField
 						margin="normal"
@@ -59,8 +53,10 @@ export default function SignIn() {
 						name="password"
 						label="Password"
 						type="password"
+						value={props.password}
 						id="password"
 						autoComplete="current-password"
+						onChange={({ target }) => props.setPassword(target.value)}
 					/>
 					<FormControlLabel
 						control={<Checkbox value="remember" color="primary" />}
@@ -90,4 +86,6 @@ export default function SignIn() {
 			</Box>
 		</Container>
 	);
-}
+};
+
+export default SignIn;
