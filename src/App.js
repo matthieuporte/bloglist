@@ -16,8 +16,8 @@ const App = () => {
 	const [notif, setNotif] = useState(false);
 	const [username, setUsername] = useState("jonero6");
 	const [password, setPassword] = useState("motdepasse");
-	//const [title, setTitle] = useState("Frontend post !!!!");
-	//const [url, setUrl] = useState("youtube.com");
+	const [title, setTitle] = useState("Frontend post !!!!");
+	const [url, setUrl] = useState("youtube.com");
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
@@ -50,7 +50,13 @@ const App = () => {
 	const blogsPage = () => (
 		<div>
 			<h1>Welcome {user.name}</h1>
-			<MyDrawer />
+			<MyDrawer
+				url={url}
+				title={title}
+				setUrl={setUrl}
+				setTitle={setTitle}
+				setBlogs={setBlogs}
+			/>
 			{notifMessage !== null && notification()}
 			<h2>blogs</h2>
 			{blogs.map(blog =>
