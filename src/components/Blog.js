@@ -1,7 +1,9 @@
-const Blog = ({blog}) => (
-    <div>
-        {blog.title} {blog.author}
-    </div>
-)
+const Blog = ({blog}) => {
+	return (
+		<div>
+			<span className="bold">{blog.title}</span> from {blog.user.username}
+		</div>
+	);
+};
 
-export default Blog
+export default Blog;
