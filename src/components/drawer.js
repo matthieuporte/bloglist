@@ -90,6 +90,7 @@ const MyDrawer = (props) => {
 							onChange={({ target }) => props.setUrl(target.value)}
 						/>
 						<Button
+							id="create-btn"
 							type="submit"
 							fullWidth
 							variant="contained"
@@ -108,7 +109,7 @@ const MyDrawer = (props) => {
 		<div>
 			{["left"].map((anchor) => (
 				<React.Fragment key={anchor}>
-					<Button onClick={toggleDrawer(anchor, true)}>Create a blog post</Button>
+					<Button onClick={toggleDrawer(anchor, true)} id="drawer-btn">Create a blog post</Button>
 					<Drawer
 						anchor={anchor}
 						open={state[anchor]}

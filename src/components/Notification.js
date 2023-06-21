@@ -23,7 +23,7 @@ const Notification = (props) => {
 	}
 
 	return (
-		<Alert className="notification" onClose={() => {props.setNotif(false);}} severity={severityVal}>{props.message}</Alert>
+		<Alert className={severityVal + " notification"} onClose={() => {props.setNotif(false);}} severity={severityVal}>{props.message}</Alert>
 	);
 };
 

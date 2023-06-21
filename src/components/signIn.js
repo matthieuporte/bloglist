@@ -64,6 +64,7 @@ const SignIn = (props) => {
 						label="Remember me"
 					/>
 					<Button
+						id="login-btn"
 						type="submit"
 						fullWidth
 						variant="contained"
