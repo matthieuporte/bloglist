@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import PropTypes from "prop-types";
 
 
 const SignIn = (props) => {
@@ -87,5 +88,14 @@ const SignIn = (props) => {
 		</Container>
 	);
 };
+
+SignIn.propTypes = {
+	handleLogin: PropTypes.func.isRequired,
+	setUsername: PropTypes.func.isRequired,
+	setPassword: PropTypes.func.isRequired,
+	username: PropTypes.string.isRequired,
+	password: PropTypes.string.isRequired
+};
+
 
 export default SignIn;

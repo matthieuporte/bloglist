@@ -1,24 +1,30 @@
 module.exports = {
 	"env": {
-		"browser" : true,
-		"node": true,
-		"commonjs": true,
-		"es2021": true
+		"browser": true,
+		"es6": true,
+		"jest/globals": true
 	},
 	"extends": [
 		"eslint:recommended",
 		"plugin:react/recommended"
 	],
 	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2018,
 		"sourceType": "module",
 	},
 	"plugins": [
-		"react"
+		"react", "jest"
 	],
 	"rules": {
 		"react/react-in-jsx-scope": "off",
 		"react/prop-types": "off",
 		"no-unused-vars": "warn",
+		"eqeqeq": "error",
+		"no-trailing-spaces": "error",
+		"no-console": 0,
 		"indent": [
 			"error",
 			"tab"
@@ -31,9 +37,20 @@ module.exports = {
 			"error",
 			"double"
 		],
+		"arrow-spacing": [
+			"error", { "before": true, "after": true }
+		],
 		"semi": [
 			"error",
 			"always"
 		]
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
 	}
 };
+
+
+
