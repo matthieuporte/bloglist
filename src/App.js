@@ -1,13 +1,14 @@
 import "./style/style.css";
 
 import { useState, useEffect } from "react";
+import * as React from "react";
 import BlogCard from "./components/BlogCard";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
 import MyDrawer from "./components/drawer";
 import LoginPage from "./components/LoginPage";
 import Notification from "./components/Notification";
-
+import Button from "@mui/material/Button";
 
 const App = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -16,8 +17,8 @@ const App = () => {
 	const [notif, setNotif] = useState(false);
 	const [username, setUsername] = useState("jonero6");
 	const [password, setPassword] = useState("motdepasse");
-	const [title, setTitle] = useState("Frontend post !!!!");
-	const [url, setUrl] = useState("youtube.com");
+	const [title, setTitle] = useState("");
+	const [url, setUrl] = useState("");
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
@@ -26,7 +27,14 @@ const App = () => {
 		);
 	}, []);
 
-
+	useEffect(() => {
+		const loggedUserJSON = window.localStorage.getItem("loggedUser");
+		if (loggedUserJSON) {
+			const user = JSON.parse(loggedUserJSON);
+			setUser(user);
+			blogService.setToken(user.token);
+		}
+	}, []);
 
 	const notification = () => (
 		<Notification message={notifMessage} severity={notifSeverity} notif={notif} setNotif={setNotif}/>
@@ -57,6 +65,7 @@ const App = () => {
 				setTitle={setTitle}
 				setBlogs={setBlogs}
 			/>
+			<Button variant="text" onClick={() => {window.localStorage.clear();location.reload();}}>Log out</Button>
 			{notifMessage !== null && notification()}
 			<h2>blogs</h2>
 			{blogs.map(blog =>

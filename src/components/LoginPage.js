@@ -14,6 +14,9 @@ const LoginPage = (props) => {
 				username: props.username, password: props.password
 			});
 
+			window.localStorage.setItem(
+				"loggedUser", JSON.stringify(user)
+			);
 			blogsService.setToken(user.token);
 			props.setUser(user);
 			props.setUsername("");
